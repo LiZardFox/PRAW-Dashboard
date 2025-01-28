@@ -1,0 +1,28 @@
+---
+title: Datenmodelierung
+format: typst
+---
+
+## Fragestellung
+
+haben gewisse Themen oder Zeitpunkte einen Einfluss auf den Erfolg eines Posts
+
+## Model
+
+```{mermaid}
+erDiagram
+    POST {
+        id  int
+        title string
+        score int
+        date date
+        upvote_ratio float
+        author string
+        num_comments int
+        is_self bool 
+        is_original_content bool
+        score_member_ratio float
+        text string
+        flair string
+    }
+```

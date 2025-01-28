@@ -1,0 +1,8 @@
+env/
+outputs/
+.quarto/
+__pycache__/
+**.ini
+data/
+app.py
+text/

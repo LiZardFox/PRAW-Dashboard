@@ -1,0 +1,58 @@
+---
+title: "Reddit Dashboard"
+author: "Tim Zimmermann"
+server: shiny
+format: 
+  dashboard: 
+    theme: 
+    - superhero
+    - theme.scss
+    nav-buttons: 
+      - icon: reddit
+        href: https://reddit.com
+        target: _blank
+---
+
+```{python}
+#| context: setup
+#| tags: 
+#|   - parameters
+subreddit = 'eldenRing'
+readable_name = None
+from helper.reddit import topPosts
+import plotly.express as px
+import re
+
+df = topPosts(subreddit)
+if(not readable_name):
+  readable_name = re.sub(r'([a-z])([A-Z])', r'\1 \2', subreddit).title()
+```
+
+# {.sidebar}
+```{python}
+from shiny.express import render, ui
+from shinywidgets import render_plotly
+
+ui.input_select('size', 'size:', ['num_comments', 'upvote_ratio', 'score'])
+ui.input_select('y', 'y-Axis:', ['score', 'upvote_ratio', 'num_comments'])
+```
+
+# Top Posts
+
+```{python}
+@render_plotly
+def plot():
+    return px.scatter(df, 
+                    x="date", y=input.y(), color="flair", 
+                    size=input.size(), size_max=60,
+                    hover_name="title")
+```
+
+
+# Data
+
+```{python}
+@render.data_frame
+def dataview():
+    return render.DataGrid(df.drop(df.columns[0], axis=1))
+```
