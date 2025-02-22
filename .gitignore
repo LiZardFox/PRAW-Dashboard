@@ -4,5 +4,10 @@ outputs/
 __pycache__/
 **.ini
 data/
-app.py
 text/
+/env/
+.quarto/
+app.py
+/.quarto/
+/report_files/
+report.html
