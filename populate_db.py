@@ -80,7 +80,7 @@ def gatherdata(df, subreddit):
 def main():
     populate_subreddits(subreddits)
     for subreddit in subreddits:
-        df = topPosts(subreddit, 10, 'day')
+        df = topPosts(subreddit, 1000, 'all')
         populate_posts(df, subreddit)
 
 if __name__ == "__main__":

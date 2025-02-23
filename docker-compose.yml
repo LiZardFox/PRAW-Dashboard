@@ -11,6 +11,7 @@ services:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    restart: unless-stopped
 
   app:
     build: .
@@ -22,6 +23,7 @@ services:
       - PYTHONUNBUFFERED=1
     depends_on:
       - db
+    restart: unless-stopped
 
   grafana:
     image: grafana/grafana:latest
@@ -33,6 +35,7 @@ services:
       - grafana_data:/var/lib/grafana
     depends_on:
       - db
+    restart: unless-stopped
 
 volumes:
   postgres_data:
