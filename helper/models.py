@@ -36,6 +36,7 @@ class SubmissionRating(Base):
     num_comments = Column(Integer, nullable=False)
     score = Column(Integer, nullable=False)
     upvote_ratio = Column(Float, nullable=False)
+    date = Column(DateTime, nullable=False)
     post_id = Column(Integer, ForeignKey('posts.id'), nullable=False)
 
     post = relationship('Post', back_populates='ratings')

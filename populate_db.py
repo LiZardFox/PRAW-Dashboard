@@ -69,6 +69,7 @@ def populate_posts(df, subreddit_name):
             num_comments=row['num_comments'],
             upvote_ratio=row['upvote_ratio'],
             score=row['score'],
+            date = datetime.now()
         )
         session.add(rating)
     session.commit()
@@ -76,12 +77,14 @@ def populate_posts(df, subreddit_name):
 def gatherdata(df, subreddit):
     write_subreddit(subreddit)
     populate_posts(df, subreddit)
+    print('collecting data for ', subreddit, 'at', datetime.now().strftime('%a %d %b %Y, %I:%M%p'))
 
 def main():
-    populate_subreddits(subreddits)
-    for subreddit in subreddits:
-        df = topPosts(subreddit, 1000, 'all')
-        populate_posts(df, subreddit)
+    print("Database is set up")
+    # populate_subreddits(subreddits)
+    # for subreddit in subreddits:
+    #     df = topPosts(subreddit, 10, 'day')
+    #     populate_posts(df, subreddit)
 
 if __name__ == "__main__":
     Base.metadata.create_all(engine)

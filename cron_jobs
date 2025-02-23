@@ -1,0 +1,2 @@
+0 0 * * * python /app/daily_script.py >> /var/log/cron.log 2>&1
+30 * * * * python /app/hourly_script.py >> /var/log/cron.log 2>&1
