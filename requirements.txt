@@ -1,0 +1,4 @@
+praw
+pandas
+sqlalchemy
+psycopg2-binary
