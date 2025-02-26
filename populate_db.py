@@ -2,7 +2,7 @@ import praw
 import sqlalchemy
 from sqlalchemy.orm import sessionmaker
 from helper.models import Base, Author, Post, Subreddit, Member, SubmissionRating
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from subreddits import subreddits
 from helper.reddit import topPosts
 
@@ -41,6 +41,22 @@ def populate_subreddits(subreddits):
     for subreddit_name in subreddits:
         write_subreddit(subreddit_name)
     session.commit()
+
+def update():
+    one_week_ago = datetime.now() - timedelta(days=7)
+    recent_posts = session.query(Post).filter(Post.date >= one_week_ago).all()
+    for post in recent_posts:
+        submission = reddit.submission(post.submission_id)
+        rating = SubmissionRating(
+            post = post,
+            num_comments=submission.num_comments,
+            upvote_ratio=submission.upvote_ratio,
+            score=submission.score,
+            date = datetime.now()
+        )
+        session.add(rating)
+    session.commit()
+    
 
 def populate_posts(df, subreddit_name):
     authors = df['author'].unique()
