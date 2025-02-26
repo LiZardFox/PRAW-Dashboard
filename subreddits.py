@@ -1,2 +1,2 @@
 
-subreddits = ['ask', 'ProgrammerHumor', 'ich_iel', 'memes', 'animemes', 'school', 'germany', 'EldenRing', 'movies']
+subreddits = ['ask', 'ProgrammerHumor', 'ich_iel', 'memes', 'animemes', 'facepalm', 'germany', 'EldenRing', 'mildyinfuriating', 'nextfuckinglevel', 'pics']
