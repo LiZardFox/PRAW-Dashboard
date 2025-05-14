@@ -1,2 +1,5 @@
-0 0 * * * cd /app && /usr/local/bin/python daily_script.py >> /var/log/cron.log 2>&1
-58 * * * * cd /app && /usr/local/bin/python hourly_script.py >> /var/log/cron.log 2>&1
+0 0 * * * cd /app && /usr/local/bin/python hourly_script.py >> /var/log/cron.log 2>&1
+0 6 * * * cd /app && /usr/local/bin/python hourly_script.py >> /var/log/cron.log 2>&1
+0 12 * * * cd /app && /usr/local/bin/python hourly_script.py >> /var/log/cron.log 2>&1
+0 18 * * * cd /app && /usr/local/bin/python hourly_script.py >> /var/log/cron.log 2>&1
+0 3 * * * cd /app && /usr/local/bin/python daily_script.py >> /var/log/cron.log 2>&1
