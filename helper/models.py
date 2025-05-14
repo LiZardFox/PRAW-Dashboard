@@ -4,6 +4,11 @@ from sqlalchemy.ext.declarative import declarative_base
 
 Base = declarative_base()
 
+#2.2a Struktur zur Speicherung von Daten
+
+# 2.3 Modellierung der DatenbankstrukturX
+
+
 class Author(Base):
     __tablename__ = 'authors'
     id = Column(Integer, primary_key=True)

@@ -12,7 +12,9 @@ engine = sqlalchemy.create_engine(DATABASE_URL)
 Session = sessionmaker(bind=engine)
 session = Session()
 
-reddit = praw.Reddit("school")
+reddit = praw.Reddit("school")  # 2.1 Verbindung mit Datenquelle
+
+# 2.5 Befüllen der Datenbank mit relevanten Daten
 
 def populate_authors(authors):
     for redditor in authors:
@@ -103,5 +105,6 @@ def main():
     #     populate_posts(df, subreddit)
 
 if __name__ == "__main__":
+    # 2.4 Erstellung der Datenbank
     Base.metadata.create_all(engine)
     main()

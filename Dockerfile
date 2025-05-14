@@ -9,6 +9,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# 2.2b Automatisierung des (wiederholten) Downloads der Daten
 COPY cron_jobs /etc/cron_jobs
 RUN touch /var/log/cron.log && crontab /etc/cron_jobs
 
